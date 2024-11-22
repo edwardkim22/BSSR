@@ -54,57 +54,56 @@ class Miscellaneous(Application):
                 )
 
             if (
-            left_indicator_light_status_input
-            or right_indicator_light_status_input
-            or hazard_lights_status_input
-        ):
-           
+                left_indicator_light_status_input
+                or right_indicator_light_status_input
+                or hazard_lights_status_input
+            ):
                 if not self.environment.peripheries.miscellaneous_indicator_lights_pwm.is_enabled():
                     self.environment.peripheries.miscellaneous_indicator_lights_pwm.enable()
             else:
                 if self.environment.peripheries.miscellaneous_indicator_lights_pwm.is_enabled():
                     self.environment.peripheries.miscellaneous_indicator_lights_pwm.disable()
-
-                    if left_indicator_light_status_input or hazard_lights_status_input:
-                        if not self.environment.peripheries.miscellaneous_left_indicator_light_pwm.is_enabled():
-                            self.environment.peripheries.miscellaneous_left_indicator_light_pwm.enable()
-                    else:
-                        if self.environment.peripheries.miscellaneous_left_indicator_light_pwm.is_enabled():
-                            self.environment.peripheries.miscellaneous_left_indicator_light_pwm.disable()
-
-                    if right_indicator_light_status_input or hazard_lights_status_input:
-                        if not self.environment.peripheries.miscellaneous_right_indicator_light_pwm.is_enabled():
-                            self.environment.peripheries.miscellaneous_right_indicator_light_pwm.enable()
-                    else:
-                        if self.environment.peripheries.miscellaneous_right_indicator_light_pwm.is_enabled():
-                            self.environment.peripheries.miscellaneous_right_indicator_light_pwm.disable()
-
-                    if daytime_running_lights_status_input:
-                        if not self.environment.peripheries.miscellaneous_daytime_running_lights_pwm.is_enabled():
-                            self.environment.peripheries.miscellaneous_daytime_running_lights_pwm.enable()
-                    else:
-                        if self.environment.peripheries.miscellaneous_daytime_running_lights_pwm.is_enabled():
-                            self.environment.peripheries.miscellaneous_daytime_running_lights_pwm.disable()
-
-                    if brake_lights_status_input:
-                        if not self.environment.peripheries.miscellaneous_brake_lights_pwm.is_enabled():
-                            self.environment.peripheries.miscellaneous_brake_lights_pwm.enable()
-                    else:
-                        if self.environment.peripheries.miscellaneous_brake_lights_pwm.is_enabled():
-                            self.environment.peripheries.miscellaneous_brake_lights_pwm.disable()
-
-                    current_horn_status = self.environment.peripheries.miscellaneous_horn_switch_gpio.read()
-                    if current_horn_status != horn_status_input:
-                        self.environment.peripheries.miscellaneous_horn_switch_gpio.write(horn_status_input)
-
-                    current_backup_camera_status = self.environment.peripheries.miscellaneous_backup_camera_control_switch_gpio.read()
-                    if current_backup_camera_status != backup_camera_control_status_input:
-                        self.environment.peripheries.miscellaneous_backup_camera_control_switch_gpio.write(backup_camera_control_status_input)
-
-                    current_display_backlight_status = self.environment.peripheries.miscellaneous_display_backlight_switch_gpio.read()
-                    if current_display_backlight_status != display_backlight_status_input:
-                        self.environment.peripheries.miscellaneous_display_backlight_switch_gpio.write(display_backlight_status_input)
-
+    
+            if left_indicator_light_status_input or hazard_lights_status_input:
+                if not self.environment.peripheries.miscellaneous_left_indicator_light_pwm.is_enabled():
+                    self.environment.peripheries.miscellaneous_left_indicator_light_pwm.enable()
+            else:
+                if self.environment.peripheries.miscellaneous_left_indicator_light_pwm.is_enabled():
+                    self.environment.peripheries.miscellaneous_left_indicator_light_pwm.disable()
+    
+            if right_indicator_light_status_input or hazard_lights_status_input:
+                if not self.environment.peripheries.miscellaneous_right_indicator_light_pwm.is_enabled():
+                    self.environment.peripheries.miscellaneous_right_indicator_light_pwm.enable()
+            else:
+                if self.environment.peripheries.miscellaneous_right_indicator_light_pwm.is_enabled():
+                    self.environment.peripheries.miscellaneous_right_indicator_light_pwm.disable()
+    
+            if daytime_running_lights_status_input:
+                if not self.environment.peripheries.miscellaneous_daytime_running_lights_pwm.is_enabled():
+                    self.environment.peripheries.miscellaneous_daytime_running_lights_pwm.enable()
+            else:
+                if self.environment.peripheries.miscellaneous_daytime_running_lights_pwm.is_enabled():
+                    self.environment.peripheries.miscellaneous_daytime_running_lights_pwm.disable()
+    
+            if brake_lights_status_input:
+                if not self.environment.peripheries.miscellaneous_brake_lights_pwm.is_enabled():
+                    self.environment.peripheries.miscellaneous_brake_lights_pwm.enable()
+            else:
+                if self.environment.peripheries.miscellaneous_brake_lights_pwm.is_enabled():
+                    self.environment.peripheries.miscellaneous_brake_lights_pwm.disable()
+    
+            current_horn_status = self.environment.peripheries.miscellaneous_horn_switch_gpio.read()
+            if current_horn_status != horn_status_input:
+                self.environment.peripheries.miscellaneous_horn_switch_gpio.write(horn_status_input)
+    
+            current_backup_camera_status = self.environment.peripheries.miscellaneous_backup_camera_control_switch_gpio.read()
+            if current_backup_camera_status != backup_camera_control_status_input:
+                self.environment.peripheries.miscellaneous_backup_camera_control_switch_gpio.write(backup_camera_control_status_input)
+    
+            current_display_backlight_status = self.environment.peripheries.miscellaneous_display_backlight_switch_gpio.read()
+            if current_display_backlight_status != display_backlight_status_input:
+                self.environment.peripheries.miscellaneous_display_backlight_switch_gpio.write(display_backlight_status_input)
+            
             (
                 self
                 .environment
