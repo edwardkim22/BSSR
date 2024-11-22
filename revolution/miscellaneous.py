@@ -91,18 +91,6 @@ class Miscellaneous(Application):
             else:
                 if self.environment.peripheries.miscellaneous_brake_lights_pwm.is_enabled():
                     self.environment.peripheries.miscellaneous_brake_lights_pwm.disable()
-    
-            current_horn_status = self.environment.peripheries.miscellaneous_horn_switch_gpio.read()
-            if current_horn_status != horn_status_input:
-                self.environment.peripheries.miscellaneous_horn_switch_gpio.write(horn_status_input)
-    
-            current_backup_camera_status = self.environment.peripheries.miscellaneous_backup_camera_control_switch_gpio.read()
-            if current_backup_camera_status != backup_camera_control_status_input:
-                self.environment.peripheries.miscellaneous_backup_camera_control_switch_gpio.write(backup_camera_control_status_input)
-    
-            current_display_backlight_status = self.environment.peripheries.miscellaneous_display_backlight_switch_gpio.read()
-            if current_display_backlight_status != display_backlight_status_input:
-                self.environment.peripheries.miscellaneous_display_backlight_switch_gpio.write(display_backlight_status_input)
             
             (
                 self
